@@ -1,5 +1,6 @@
-# geo_quiz_group_project
+# Geo Quiz Group Project
 Week 14 Group Project
+
 https://trello.com/b/mDndm0uJ/group-project
 
 # Educational App
