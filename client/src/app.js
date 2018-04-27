@@ -7,6 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const countriesData = new CountriesData();
   countriesData.getData((data) => {
     console.log('Test');
+    console.dir(countriesData.data);
   });
-  console.dir(countriesData.data);
 });
