@@ -1,3 +1,13 @@
 body {
 
 }
+
+#question-image {
+  max-height: 200px;
+  max-width: 300px;
+}
+
+button {
+  display: block;
+  margin: 0.5rem;
+}
