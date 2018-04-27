@@ -5,16 +5,18 @@ const QuizData = require('./models/quiz_data.js');
 document.addEventListener('DOMContentLoaded', () => {
   const countriesData = new CountriesData();
   const quizData = new QuizData(countriesData);
+
+  const quizStartButton = document.querySelector("#flag-quiz-button");
+  const quizContainer = document.querySelector("#quiz-container");
+
   countriesData.getData((countries) => {
-    // console.dir(countriesData.data);
-
     const sample = countriesData.getSampleCountries();
-    console.log(sample);
     const smallSample = countriesData.getDifferentCountries(sample[0]);
-    console.log(smallSample);
-    quizData.generateQuiz();
-    console.log(quizData);
-  });
 
+    quizStartButton.addEventListener('click', () =>  {
+      quizData.generateQuiz();
+      console.log(quizData);
+    });
+  });
 
 });
