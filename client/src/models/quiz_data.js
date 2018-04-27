@@ -24,10 +24,8 @@ QuizData.prototype.generateQuestion = function (rightAnswer, wrongAnswers) {
   const rightName = rightAnswer.name;
   const wrongNames = wrongAnswers.map((wrongAnswer) => wrongAnswer.name);
 
-  question.answers = [...wrongAnswers];
+  question.answers = [...wrongNames];
   question.answers.splice(question.correctIndex, 0, rightName);
-  question.wrongNames = wrongNames;
-  question.wrongAnswers = wrongAnswers;
   return question;
 }
 
