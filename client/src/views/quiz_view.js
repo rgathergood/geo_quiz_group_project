@@ -3,7 +3,7 @@ const QuizView = function(quizContainer) {
 }
 
 QuizView.prototype.renderQuestion = function (question) {
-  const text = document.createElement('h4');
+  const text = document.createElement('h3');
   text.classList.add('question-text');
   text.textContent = question.text;
   this.quizContainer.appendChild(text);

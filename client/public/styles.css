@@ -1,5 +1,5 @@
 body {
-
+  font-family: 'Gothic A1', sans-serif;
 }
 
 header {
@@ -29,10 +29,10 @@ button:hover {
   width: 400px;
 }
 
-.correct-answer:active {
+.correct-answer:focus {
   background-color: green;
 }
 
-.incorrect-answer:active {
+.incorrect-answer:focus {
   background-color: red;
 }
