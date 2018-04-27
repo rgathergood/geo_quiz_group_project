@@ -2,16 +2,30 @@ body {
   font-family: 'Gothic A1', sans-serif;
 }
 
+h1 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
 header {
   border-bottom: 5px solid black;
 }
 
+#quiz-container {
+  margin: 2rem;
+}
+
 .question-image {
   max-height: 300px;
+  margin: auto;
+  border: 1px solid black;
+  display: block;
 }
 
 button {
-  display: block;
   margin: 0.5rem;
   font-size: 120%;
   border-radius: 1rem;
@@ -21,18 +35,36 @@ button:hover {
   background-color: yellow;
 }
 
+#flag-quiz-button {
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
 .correct-answer {
+  margin: auto;
+  margin-top: 1rem;
   width: 400px;
+  display: block;
+  padding: 0.5rem 0;
 }
 
 .incorrect-answer {
+  margin: auto;
+  margin-top: 1rem;
   width: 400px;
+  display: block;
+  padding: 0.5rem 0;
 }
 
 .correct-answer:focus {
   background-color: green;
+  color: white;
 }
 
 .incorrect-answer:focus {
   background-color: red;
+  color: white;
 }
