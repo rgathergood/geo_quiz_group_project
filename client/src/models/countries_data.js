@@ -23,8 +23,10 @@ CountriesData.prototype.getSampleCountries = function (number = 10) {
   return countriesArray;
 }
 
-// CountriesData.prototype.getDifferentCountries = function (sampleCountry, number = 3) {
-//
-// };
+CountriesData.prototype.getDifferentCountries = function (sampleCountry, number = 3) {
+  let countriesArray = this.getSampleCountries(number + 1);
+  countriesArray = countriesArray.filter((country) => country.name !== sampleCountry.name);
+  return countriesArray.slice(0, 3);
+}
 
 module.exports = CountriesData;
