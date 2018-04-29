@@ -11,10 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizData = new QuizData(countriesData);
   const quizView = new QuizView(quizContainer);
 
+  const renderNewQuestion = function(index) {
+    if (index < quizData.questions.length) {
+      quizView.renderQuestion(quizData.questions[index + 1], () => {
+        renderNewQuestion(index + 1);
+      });
+    }
+  }
+
   countriesData.getData((countries) => {
     quizStartButton.addEventListener('click', () =>  {
       quizData.generateQuiz();
-      quizView.renderQuestion(quizData.questions[0]);
+      let index = 0;
+      quizView.renderQuestion(quizData.questions[0], () => {
+        renderNewQuestion(index);
+      });
       console.log(quizData.questions[0]);
     });
   });
