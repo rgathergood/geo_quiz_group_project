@@ -17,6 +17,7 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
 
   for(let i = 0; i < question.answers.length; i++) {
     const button = document.createElement('button');
+    button.classList.add('answer-button');
     if(i === question.correctIndex) {
       button.classList.add('correct-answer');
     } else {
@@ -33,6 +34,9 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
       if (!button.classList.contains('show-correct')) {
         button.classList.add('show-incorrect');
       }
+
+      const buttons = document.querySelectorAll('.answer-button');
+      buttons.forEach((button) => button.disabled = true);
     });
   }
   this.createNextButton(onNextButtonClicked);
