@@ -26,13 +26,11 @@ QuizView.prototype.renderQuestion = function (question) {
     this.quizContainer.appendChild(button);
 
     button.addEventListener('click', function () {
-    const correctBtn = document.querySelector('.correct-answer');
-    correctBtn.classList.add('show-correct');
-    if (!button.classList['show-correct'])
-      button.classList.add('show-incorrect');
-      //disable buttons
-      //next button visbility
-
+      const correctBtn = document.querySelector('.correct-answer');
+      correctBtn.classList.add('show-correct');
+      if (!button.classList['show-correct']) {
+        button.classList.add('show-incorrect');
+      }
     });
   }
   this.createNextButton();
@@ -42,6 +40,7 @@ QuizView.prototype.renderQuestion = function (question) {
 QuizView.prototype.createNextButton = function () {
   const nextButton = document.createElement('button');
   nextButton.textContent = 'Next';
+  nextButton.classList.add('next-button');
   this.quizContainer.appendChild(nextButton);
 };
 
