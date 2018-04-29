@@ -24,11 +24,13 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
     }
     button.textContent = question.answers[i];
     this.quizContainer.appendChild(button);
+    console.log(button.classList);
 
-    button.addEventListener('click', function () {
+    button.addEventListener('click', ()  =>  {
       const correctBtn = document.querySelector('.correct-answer');
       correctBtn.classList.add('show-correct');
-      if (!button.classList['show-correct']) {
+
+      if (!button.classList.contains('show-correct')) {
         button.classList.add('show-incorrect');
       }
     });
