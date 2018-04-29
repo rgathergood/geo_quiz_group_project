@@ -14,6 +14,8 @@ AnthemScraper.prototype.scrape = function(url, onComplete) {
     alphabet.forEach((letter) => {
       const dropDown = cheerio('#' + letter + 'drop');
       this.getAudios(dropDown);
+      console.log('getting missing audios...');
+      this.getMissingAudios();
       console.log(`Completed scraping audio files for ${letter}.`);
     });
     onComplete();
@@ -29,6 +31,22 @@ AnthemScraper.prototype.getAudios = function(cheerio) {
     const src = element.attribs.href;
     this.data[countryName] = src;
   });
+};
+
+AnthemScraper.prototype.getMissingAudios = function () {
+  const countryNames = Object.keys(this.data);
+  for (let i = 0; i < countryNames.length; i++) {
+    const href = this.data[countryNames[i]];
+    const fileExtension = href.split('.').pop();
+
+    if (fileExtension === 'html') {
+      console.log(href);
+    }
+    else if (fileExtension !== 'mp3') {
+      console.log(href);
+    }
+  }
+
 };
 
 module.exports = AnthemScraper;
