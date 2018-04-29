@@ -24,6 +24,18 @@ QuizView.prototype.renderQuestion = function (question) {
     }
     button.textContent = question.answers[i];
     this.quizContainer.appendChild(button);
+
+    button.addEventListener('click', function () {
+    const correctBtn = document.querySelector('.correct-answer');
+    correctBtn.classList.add('show-correct');
+    if (!button.classList['show-correct'])
+      button.classList.add('show-incorrect');
+
+
+
+      //call create next button
+      //disable buttons
+    })
   }
 
 };

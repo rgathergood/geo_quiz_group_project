@@ -59,12 +59,22 @@ button:hover {
   padding: 0.5rem 0;
 }
 
-.correct-answer:focus {
+/* .correct-answer:focus {
   background-color: green;
   color: white;
 }
 
 .incorrect-answer:focus {
+  background-color: red;
+  color: white;
+} */
+
+.show-correct {
+  background-color: green;
+  color: white;
+}
+
+.show-incorrect {
   background-color: red;
   color: white;
 }
