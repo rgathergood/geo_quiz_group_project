@@ -2,7 +2,7 @@ const QuizView = function(quizContainer) {
   this.quizContainer = quizContainer;
 }
 
-QuizView.prototype.renderQuestion = function (question) {
+QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
   this.quizContainer.innerHTML = "";
 
   const text = document.createElement('h3');
@@ -35,13 +35,16 @@ QuizView.prototype.renderQuestion = function (question) {
 
     });
   }
-  this.createNextButton();
+  this.createNextButton(onNextButtonClicked);
 
 };
 
-QuizView.prototype.createNextButton = function () {
+QuizView.prototype.createNextButton = function (onNextButtonClicked) {
   const nextButton = document.createElement('button');
   nextButton.textContent = 'Next';
+
+  nextButton.addEventListener('click', onNextButtonClicked);
+
   this.quizContainer.appendChild(nextButton);
 };
 
