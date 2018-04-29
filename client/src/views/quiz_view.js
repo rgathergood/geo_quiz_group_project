@@ -43,6 +43,15 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
 
 };
 
+QuizView.prototype.renderResult = function () {
+  this.quizContainer.innerHTML = "";
+
+  const text = document.createElement('h3');
+  text.classList.add('result-text');
+  text.textContent = 'Wahoo!';
+  this.quizContainer.appendChild(text);
+};
+
 QuizView.prototype.createNextButton = function (onNextButtonClicked) {
   const nextButton = document.createElement('button');
   nextButton.textContent = 'Next';

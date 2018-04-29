@@ -12,10 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizView = new QuizView(quizContainer);
 
   const renderNewQuestion = function(index) {
-    if (index < quizData.questions.length) {
+    if (index < quizData.questions.length - 1) {
       quizView.renderQuestion(quizData.questions[index + 1], () => {
         renderNewQuestion(index + 1);
       });
+    }
+    else {
+      quizView.renderResult();
     }
   }
 
