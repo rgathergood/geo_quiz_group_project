@@ -3,6 +3,8 @@ const QuizView = function(quizContainer) {
 }
 
 QuizView.prototype.renderQuestion = function (question) {
+  this.quizContainer.innerHTML = "";
+
   const text = document.createElement('h3');
   text.classList.add('question-text');
   text.textContent = question.text;
@@ -24,6 +26,12 @@ QuizView.prototype.renderQuestion = function (question) {
     this.quizContainer.appendChild(button);
   }
 
+};
+
+QuizView.prototype.createNextButton = function () {
+  const nextButton = document.createElement('button');
+  nextButton.textContent = 'Next';
+  this.quizContainer.appendChild(nextButton);
 };
 
 module.exports = QuizView;
