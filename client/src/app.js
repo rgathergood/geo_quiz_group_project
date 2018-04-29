@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
       quizData.generateQuiz();
       quizView.renderQuestion(quizData.questions[0]);
       console.log(quizData.questions[0]);
-    
     });
   });
 
