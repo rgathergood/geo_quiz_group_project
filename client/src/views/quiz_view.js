@@ -30,13 +30,12 @@ QuizView.prototype.renderQuestion = function (question) {
     correctBtn.classList.add('show-correct');
     if (!button.classList['show-correct'])
       button.classList.add('show-incorrect');
-
-
-
-      //call create next button
       //disable buttons
-    })
+      //next button visbility
+
+    });
   }
+  this.createNextButton();
 
 };
 
