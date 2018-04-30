@@ -7,11 +7,28 @@ h1 {
 }
 
 h3 {
+  margin-top: 1rem;
   text-align: center;
 }
 
 header {
   border-bottom: 5px solid blue;
+}
+
+input {
+  margin: auto;
+  margin-top: 1rem;
+  display: block;
+  width: 200px;
+  font-size: 120%;
+  border-radius: 3px;
+}
+
+.start-quiz-button {
+  margin: auto;
+  margin-top: 1rem;
+  display: block;
+  padding: 0.5rem 1rem;
 }
 
 #quiz-container {
