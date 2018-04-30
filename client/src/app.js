@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
           result.score = 0;
           result.name = input.value;
           renderNewQuestion(-1, quizData, quizView);
-          console.log(result);
         });
       });
     });
