@@ -15,6 +15,12 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
   image.src = question.imgUrl;
   this.quizContainer.appendChild(image);
 
+  this.renderAnswerButtons(question);
+  this.createNextButton(onNextButtonClicked);
+
+};
+
+QuizView.prototype.renderAnswerButtons = function(question) {
   for(let i = 0; i < question.answers.length; i++) {
     const button = document.createElement('button');
     button.classList.add('answer-button');
@@ -39,9 +45,7 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
       buttons.forEach((button) => button.disabled = true);
     });
   }
-  this.createNextButton(onNextButtonClicked);
-
-};
+}
 
 QuizView.prototype.renderResult = function () {
   this.quizContainer.innerHTML = "";
