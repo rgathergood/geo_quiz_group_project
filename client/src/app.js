@@ -11,25 +11,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizData = new QuizData(countriesData);
   const quizView = new QuizView(quizContainer);
 
+  let score;
+  const incrementScore = function() {
+    score += 1;
+  }
+
   const renderNewQuestion = function(index) {
     if (index < quizData.questions.length - 1) {
-      quizView.renderQuestion(quizData.questions[index + 1], () => {
-        renderNewQuestion(index + 1);
-      });
+      quizView.renderQuestion(
+        quizData.questions[index + 1],
+        () => {
+          renderNewQuestion(index + 1);
+        },
+        incrementScore
+      );
     }
     else {
-      quizView.renderResult();
+      quizView.renderResult(score);
     }
   }
 
   countriesData.getData((countries) => {
     quizStartButton.addEventListener('click', () =>  {
       quizData.generateQuiz();
+      score = 0;
       let index = 0;
       quizView.renderQuestion(quizData.questions[0], () => {
         renderNewQuestion(index);
-      });
-      console.log(quizData.questions[0]);
+        },
+        incrementScore
+      );
     });
   });
 
