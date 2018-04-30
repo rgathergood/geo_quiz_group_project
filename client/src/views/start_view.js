@@ -2,7 +2,7 @@ const StartView = function(container) {
   this.container = container;
 }
 
-StartView.prototype.renderStart = function () {
+StartView.prototype.renderStart = function (onStartButtonClicked) {
   this.container.innerHTML = "";
 
   const form = document.createElement('form');
@@ -16,9 +16,8 @@ StartView.prototype.renderStart = function () {
 
   const button = document.createElement('button');
   button.textContent = "Start";
-  // button.addEventListener('click') {
-  //
-  // }
+  button.classList.add('start-quiz-button');
+  onStartButtonClicked(button);
   form.appendChild(button);
 
   this.container.appendChild(form);

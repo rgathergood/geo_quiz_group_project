@@ -17,10 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   countriesData.getData(() => {
     quizStartButton.addEventListener('click', () =>  {
-      startView.renderStart();
-      // quizData.generateQuiz();
-      // score = 0;
-      // renderNewQuestion(-1, quizData, quizView);
+      startView.renderStart((button) =>  {
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          quizData.generateQuiz();
+          score = 0;
+          renderNewQuestion(-1, quizData, quizView);
+        });
+      });
     });
   });
 
