@@ -35,12 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
     quizStartButton.addEventListener('click', () =>  {
       quizData.generateQuiz();
       score = 0;
-      let index = 0;
-      quizView.renderQuestion(quizData.questions[0], () => {
-        renderNewQuestion(index);
-        },
-        incrementScore
-      );
+      // let index = 0;
+      renderNewQuestion(-1);
+      // quizView.renderQuestion(quizData.questions[0], () => {
+      //   renderNewQuestion(index);
+      //   },
+      //   incrementScore
+      // );
     });
   });
 
