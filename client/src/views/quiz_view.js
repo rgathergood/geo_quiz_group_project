@@ -3,7 +3,6 @@ const QuizView = function(quizContainer) {
 }
 
 QuizView.prototype.renderQuestion = function (question, onNextButtonClicked, onCorrectAnswerClicked) {
-  console.log(onCorrectAnswerClicked);
   this.quizContainer.innerHTML = "";
 
   const text = document.createElement('h3');
