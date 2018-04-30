@@ -11,7 +11,7 @@ h3 {
 }
 
 header {
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid blue;
 }
 
 #quiz-container {
@@ -32,8 +32,9 @@ button {
 }
 
 button:hover {
-  background-color: yellow;
+  border: 1px solid blue;
 }
+
 
 #flag-quiz-button {
   display: block;
@@ -66,16 +67,6 @@ button:hover {
   padding: 0.5rem;
   float: right;
 }
-
-/* .correct-answer:focus {
-  background-color: green;
-  color: white;
-}
-
-.incorrect-answer:focus {
-  background-color: red;
-  color: white;
-} */
 
 .show-correct {
   background-color: green;
