@@ -6,7 +6,6 @@ const AnthemScraper = function() {
 }
 
 AnthemScraper.prototype.scrape = function(url, onComplete) {
-  // this.getCountryUrl(url, this.getAnthemUrl);
   reqPromise(url)
   .then((html) => {
     const cheerio = Cheerio.load(html);
@@ -15,7 +14,7 @@ AnthemScraper.prototype.scrape = function(url, onComplete) {
       const dropDown = cheerio('#' + letter + 'drop');
       this.getAudios(dropDown);
       console.log('getting missing audios...');
-      this.getMissingAudios();
+      this.checkUrls();
       console.log(`Completed scraping audio files for ${letter}.`);
     });
     onComplete();
@@ -33,20 +32,25 @@ AnthemScraper.prototype.getAudios = function(cheerio) {
   });
 };
 
-AnthemScraper.prototype.getMissingAudios = function () {
+AnthemScraper.prototype.checkUrls = function() {
   const countryNames = Object.keys(this.data);
   for (let i = 0; i < countryNames.length; i++) {
     const href = this.data[countryNames[i]];
     const fileExtension = href.split('.').pop();
 
     if (fileExtension === 'html') {
-      console.log(href);
+      this.data[countryNames[i]] = this.getMissingAudios(href);
     }
     else if (fileExtension !== 'mp3') {
+      console.log('Found unexpected file extension when scraping for audio files:');
       console.log(href);
+      delete this.data[countryNames[i]];
     }
   }
-
 };
+
+AnthemScraper.prototype.getMissingAudios(href) {
+  
+}
 
 module.exports = AnthemScraper;
