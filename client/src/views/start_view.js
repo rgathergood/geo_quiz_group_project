@@ -16,9 +16,9 @@ StartView.prototype.renderStart = function () {
 
   const button = document.createElement('button');
   button.textContent = "Start";
-  button.addEventListener('click', ) {
-    
-  }
+  // button.addEventListener('click') {
+  //
+  // }
   form.appendChild(button);
 
   this.container.appendChild(form);
