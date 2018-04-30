@@ -2,7 +2,7 @@ const QuizView = function(quizContainer) {
   this.quizContainer = quizContainer;
 }
 
-QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
+QuizView.prototype.renderQuestion = function (question, onNextButtonClicked, onCorrectAnswerClicked) {
   this.quizContainer.innerHTML = "";
 
   const text = document.createElement('h3');
@@ -15,6 +15,12 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
   image.src = question.imgUrl;
   this.quizContainer.appendChild(image);
 
+  this.renderAnswerButtons(question, onCorrectAnswerClicked);
+  this.createNextButton(onNextButtonClicked);
+
+};
+
+QuizView.prototype.renderAnswerButtons = function(question, onCorrectAnswerClicked) {
   for(let i = 0; i < question.answers.length; i++) {
     const button = document.createElement('button');
     button.classList.add('answer-button');
@@ -25,13 +31,15 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
     }
     button.textContent = question.answers[i];
     this.quizContainer.appendChild(button);
-    console.log(button.classList);
 
     button.addEventListener('click', ()  =>  {
       const correctBtn = document.querySelector('.correct-answer');
       correctBtn.classList.add('show-correct');
 
-      if (!button.classList.contains('show-correct')) {
+      if (button.classList.contains('show-correct')) {
+        onCorrectAnswerClicked();
+      }
+      else {
         button.classList.add('show-incorrect');
       }
 
@@ -39,16 +47,14 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked) {
       buttons.forEach((button) => button.disabled = true);
     });
   }
-  this.createNextButton(onNextButtonClicked);
+}
 
-};
-
-QuizView.prototype.renderResult = function () {
+QuizView.prototype.renderResult = function (result) {
   this.quizContainer.innerHTML = "";
 
   const text = document.createElement('h3');
   text.classList.add('result-text');
-  text.textContent = 'Wahoo!';
+  text.textContent = `Congratulations, ${result.name}! You got ${result.score} out of 10!`;
   this.quizContainer.appendChild(text);
 };
 
