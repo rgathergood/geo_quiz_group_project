@@ -2,9 +2,10 @@ const express = require('express');
 const parser = require('body-parser');
 
 const Scraper = require('./db/anthem_scraper.js');
-scraper = new Scraper();
-scraper.scrape('http://www.navyband.navy.mil/national_anthems.html', () => {
-  console.log('Done scraping!');
+scraper = new Scraper('http://www.navyband.navy.mil/');
+scraper.scrape(() => {
+  console.log((Object.keys(scraper.data)).length);
+  console.log(scraper.data);
 });
 
 const server = express();
