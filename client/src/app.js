@@ -4,10 +4,10 @@ const QuizData = require('./models/quiz_data.js');
 const QuizView = require('./views/quiz_view.js');
 const StartView = require('./views/start_view.js');
 
-let score;
+let result = {};
 
 document.addEventListener('DOMContentLoaded', () => {
-  const quizStartButton = document.querySelector("#flag-quiz-button");
+  const newQuizButton = document.querySelector("#new-quiz-button");
   const quizContainer = document.querySelector("#quiz-container");
 
   const countriesData = new CountriesData();
@@ -16,22 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const startView = new StartView(quizContainer);
 
   countriesData.getData(() => {
-    quizStartButton.addEventListener('click', () =>  {
-      startView.renderStart((button) =>  {
-        button.addEventListener('click', (event) => {
+    newQuizButton.addEventListener('click', () =>  {
+      startView.renderStart((startButton, input) =>  {
+        startButton.addEventListener('click', (event) => {
           event.preventDefault();
           quizData.generateQuiz();
-          score = 0;
+          result.score = 0;
+          result.name = input.value;
           renderNewQuestion(-1, quizData, quizView);
+          console.log(result);
         });
       });
     });
   });
-
 });
 
 const incrementScore = function() {
-  score += 1;
+  result.score += 1;
 }
 
 const renderNewQuestion = function(index, quizData, quizView) {
@@ -45,6 +46,6 @@ const renderNewQuestion = function(index, quizData, quizView) {
     );
   }
   else {
-    quizView.renderResult(score);
+    quizView.renderResult(result);
   }
 }
