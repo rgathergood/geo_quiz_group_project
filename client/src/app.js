@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizData = new QuizData(countriesData);
   const quizView = new QuizView(quizContainer);
 
-  countriesData.getData((countries) => {
+  countriesData.getData(() => {
     quizStartButton.addEventListener('click', () =>  {
       quizData.generateQuiz();
       score = 0;
