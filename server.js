@@ -19,28 +19,11 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client){
 
   const db = client.db('geo_quiz');
   console.log('Connected to db');
+
   const leaderboardCollection = db.collection('leaderboard');
-
-  // get anthems
   const anthemsCollection = db.collection('anthems');
-  scraper.scrape(() => {
-    console.log('Finished scraping for anthems');
-    anthemsCollection.drop(null, (err, result) => {
-      if (err) console.log(err);
-    });
 
-    for (let country in scraper.data) {
-      const newEntry = {
-        "name": country,
-        "anthem": scraper.data[country]
-      }
-      anthemsCollection.save(newEntry, null, (err, result) => {
-        if (err) console.log(err);
-      });
-    }
-    console.log('Updated anthems collection');
-  });
-
+  updateAnthemsCollection(anthemsCollection);
 
   server.get('/db/leaderboard', function (req, res){
     leaderboardCollection.find().toArray(function(err, allScores){
@@ -69,8 +52,28 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client){
     });
   });
 
-  // server.listen(3000, function () {
-  //   console.log('Listening on port 3000');
-  // });
+  server.listen(3000, function () {
+    console.log('Listening on port 3000');
+  });
 
 });
+
+const updateAnthemsCollection = function(anthemsCollection) {
+  scraper.scrape(() => {
+    console.log('Finished scraping for anthems');
+    anthemsCollection.drop(null, (err, result) => {
+      if (err) console.log(err);
+    });
+
+    for (let country in scraper.data) {
+      const newEntry = {
+        "name": country,
+        "anthem": scraper.data[country]
+      }
+      anthemsCollection.save(newEntry, null, (err, result) => {
+        if (err) console.log(err);
+      });
+    }
+    console.log('Updated anthems collection');
+  });
+}
