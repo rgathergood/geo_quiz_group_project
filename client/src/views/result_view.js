@@ -26,17 +26,18 @@ ResultView.prototype.renderResult = function (result) {
   scoreHeader.innerHTML = 'Score';
 
   const getScoresRequestComplete = function (allScores) {
-    for (let i = 0; i < allScores.length; i++) {
+    const sortedScores = allScores.sort((a, b) => b.score - a.score);
+    for (let i = 0; i < sortedScores.length; i++) {
       const resultsRow = table.insertRow(i + 1);
       const playerName = resultsRow.insertCell(0);
       const playerScore = resultsRow.insertCell(1);
-      playerName.innerHTML = `${allScores[i].name}`;
-      playerScore.innerHTML = `${allScores[i].score}`;
+      playerName.innerHTML = `${sortedScores[i].name}`;
+      playerScore.innerHTML = `${sortedScores[i].score}`;
     }
   }
 
   leaderboardRequest.get(getScoresRequestComplete);
 
-};
+}
 
 module.exports = ResultView;
