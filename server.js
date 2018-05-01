@@ -3,11 +3,6 @@ const parser = require('body-parser');
 
 const Scraper = require('./db/anthem_scraper.js');
 scraper = new Scraper('http://www.navyband.navy.mil/');
-scraper.scrape(() => {
-  console.log((Object.keys(scraper.data)).length);
-  console.log(scraper.data);
-  console.log('done scraping');
-});
 
 const server = express();
 const MongoClient = require('mongodb').MongoClient;
@@ -25,6 +20,13 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client){
   const db = client.db('geo_quiz');
   console.log('connected to db');
   const leaderboardCollection = db.collection('leaderboard');
+
+  const anthemsCollection = db.collection('anthems');
+  scraper.scrape(() => {
+    anthemsCollection.drop(null, (err, result) => console.log(err));
+    anthemsCollection.save(scraper.data, null, (err, result) => console.log(err));
+    console.log('done scraping');
+  });
 
 
   server.get('/db/leaderboard', function (req, res){
