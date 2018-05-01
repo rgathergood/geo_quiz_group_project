@@ -44,6 +44,7 @@ const incrementScore = function() {
 const renderNewQuestion = function(index, quizData, quizView, resultView) {
   if (index < quizData.questions.length - 1) {
     quizView.renderQuestion(
+      index + 2,
       quizData.questions[index + 1],
       () => {
         renderNewQuestion(index + 1, quizData, quizView, resultView);

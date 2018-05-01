@@ -2,7 +2,7 @@ const QuizView = function(quizContainer) {
   this.quizContainer = quizContainer;
 }
 
-QuizView.prototype.renderQuestion = function (question, onNextButtonClicked, onCorrectAnswerClicked) {
+QuizView.prototype.renderQuestion = function (index, question, onNextButtonClicked, onCorrectAnswerClicked) {
   this.quizContainer.innerHTML = "";
 
   const text = document.createElement('h3');
@@ -14,6 +14,11 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked, onC
   image.classList.add('question-image');
   image.src = question.imgUrl;
   this.quizContainer.appendChild(image);
+
+  const counter = document.createElement('p');
+  counter.classList.add('counter');
+  counter.textContent = `${index} of 10`;
+  this.quizContainer.appendChild(counter);
 
   this.renderAnswerButtons(question, onCorrectAnswerClicked);
   this.createNextButton(onNextButtonClicked);
