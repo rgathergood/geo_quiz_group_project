@@ -14,7 +14,7 @@ ResultView.prototype.renderResult = function (result) {
   const text = document.createElement('h3');
   text.classList.add('result-text');
   const message = this.customMessage(result);
-  text.textContent = `${message} ${result.name}! You got ${result.score} out of 10!`;
+  text.textContent = `${message} ${result.name}! You got ${result.score} out of 10 with ${result.timeRemaining} left on the clock!`;
   this.container.appendChild(text);
 
   const table = document.createElement('table');
