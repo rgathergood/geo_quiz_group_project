@@ -6,6 +6,7 @@ scraper = new Scraper('http://www.navyband.navy.mil/');
 scraper.scrape(() => {
   console.log((Object.keys(scraper.data)).length);
   console.log(scraper.data);
+  console.log('done scraping');
 });
 
 const server = express();
@@ -53,10 +54,8 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client){
     });
   });
 
-  server.listen(3000, function () {
-    console.log('Listening on port 3000');
-  });
+  // server.listen(3000, function () {
+  //   console.log('Listening on port 3000');
+  // });
 
 });
-
-//this is a comment

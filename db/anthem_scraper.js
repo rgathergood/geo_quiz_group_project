@@ -42,7 +42,7 @@ AnthemScraper.prototype.checkUrls = function(onComplete) {
       this.leftToProcess += 1;
       this.getMissingAudios(this.url + relativePath, countryNames[i], onComplete);
     }
-    else if (fileExtension !== 'mp3') {
+    else if (fileExtension !== 'mp3'){
       console.log('Found unexpected file extension when scraping for audio files:');
       console.log(href);
       delete this.data[countryNames[i]];
@@ -58,17 +58,22 @@ AnthemScraper.prototype.getMissingAudios = function(href, countryName, onComplet
     const firstSongElement = cheerio('#mainContent').find('table').find('a')[0];
     const firstSongLink = firstSongElement.attribs.href;
     this.data[countryName] = firstSongLink;
-    this.makeProgress(callback);
+    this.makeProgress(onComplete);
   })
   .catch((err) => {
-    console.log(`AnthemScraper: getMissingAudios request failed for ${href}`);
-    this.makeProgress(onComplete);
+    console.log(`AnthemScraper: getMissingAudios request failed for ${href}:`);
+    // console.log(err);
   });
 }
 
 AnthemScraper.prototype.makeProgress = function(callback) {
   this.leftToProcess = this.leftToProcess - 1;
-  if (this.leftToProcess === 0) callback();
+  if (this.leftToProcess === 0) {
+    for (let country in this.data) {
+      this.data[country] = this.url + this.data[country];
+    }
+    callback();
+  }
 }
 
 module.exports = AnthemScraper;
