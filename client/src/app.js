@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const timer = new CountdownTimer(60, function() {
     if (this.display === '00:00') {
-      console.log('out of time - calling loadResultsPage')
-      loadResultsPage(this, resultView)
+      console.log('out of time - calling loadResultsPage');
+      loadResultsPage(this, resultView);
     }
     quizView.updateTimerDisplay(this.display);
   });
@@ -58,7 +58,6 @@ const renderNewQuestion = function(index, quizData, quizView, resultView, timer)
       },
       incrementScore
     );
-    console.log('index', index)
   }
   else {
     loadResultsPage(timer, resultView);
@@ -66,7 +65,9 @@ const renderNewQuestion = function(index, quizData, quizView, resultView, timer)
 }
 
 const loadResultsPage = function(timer, resultView) {
+  console.log("gets to loadResultsPage");
   timer.stop();
+  console.log('timer stops on results load');
   result.timeRemaining = timer.display;
-  leaderboardRequest.post(result, () => {resultView.renderResult(result)});
+  leaderboardRequest.post(result, () => resultView.renderResult(result));
 }
