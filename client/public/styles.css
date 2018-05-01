@@ -118,6 +118,22 @@ button:disabled {
 }
 
 .results-table {
+  width: 400px;
   margin: auto;
   margin-top: 2rem;
+  font-size: 120%;
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+tr {
+  text-align: center;
+}
+
+.name-score-row {
+  font-weight: bolder;
+  text-align: center;
+  border: 1px solid blue;
+  color: blue;
 }
