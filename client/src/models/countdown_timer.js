@@ -7,7 +7,7 @@ const CountdownTimer = function(duration, onUpdate) {
 
 CountdownTimer.prototype.start = function() {
   this.startTime = Date.now();
-  this.interval = setInterval(() => this.printTimeLeft(), 100);
+  this.interval = setInterval(() => this.printTimeLeft(), 500);
 }
 
 CountdownTimer.prototype.stop = function() {
@@ -18,7 +18,6 @@ CountdownTimer.prototype.printTimeLeft = function() {
   const secondsExpired = Math.floor((Date.now() - this.startTime)/1000);
   const totalSecondsLeft = this.duration - secondsExpired;
   this.updateDisplayWithCallback(totalSecondsLeft);
-
   if (totalSecondsLeft <= 0) {
     this.stop();
   }

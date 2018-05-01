@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultView = new ResultView(quizContainer);
 
   const timer = new CountdownTimer(60, function() {
-    if (this.display === '00:00') loadResultsPage(this, resultView)
+    if (this.display === '00:00') {
+      console.log('out of time - calling loadResultsPage')
+      loadResultsPage(this, resultView)
+    }
     quizView.updateTimerDisplay(this.display);
   });
 
@@ -33,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
           result.score = 0;
           result.name = input.value;
 
-          renderNewQuestion(-1, quizData, quizView, resultView, timer);
+          renderNewQuestion(0, quizData, quizView, resultView, timer); //set index to 0
           timer.start();
         });
       });
@@ -46,15 +49,16 @@ const incrementScore = function() {
 }
 
 const renderNewQuestion = function(index, quizData, quizView, resultView, timer) {
-  if (index < quizData.questions.length - 1) {
+  if (index < quizData.questions.length) {
     quizView.renderQuestion(
-      index + 2,
-      quizData.questions[index + 1],
+      index + 1,
+      quizData.questions[index],
       () => {
         renderNewQuestion(index + 1, quizData, quizView, resultView, timer);
       },
       incrementScore
     );
+    console.log('index', index)
   }
   else {
     loadResultsPage(timer, resultView);
@@ -65,5 +69,5 @@ const loadResultsPage = function(timer, resultView) {
   timer.stop();
   result.timeRemaining = timer.display;
   resultView.renderResult(result);
-  leaderboardRequest.post(result, () => {console.log('Successfully wrote to db')});
+  leaderboardRequest.post(result, () => {/*console.log('Successfully wrote to db')*/});
 }
