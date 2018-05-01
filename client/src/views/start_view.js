@@ -24,10 +24,6 @@ StartView.prototype.renderStart = function (onStartButtonClicked) {
     button.disabled = false;
   });
 
-  if (input.value =""){
-    button.disabled = true;
-  }
-
   onStartButtonClicked(button, input);
 
   this.container.appendChild(form);

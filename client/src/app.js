@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const startView = new StartView(quizContainer);
   const resultView = new ResultView(quizContainer);
 
-  const timer = new CountdownTimer(5, function() {
+  const timer = new CountdownTimer(60, function() {
     if (this.display === '00:00') loadResultsPage(this, resultView)
     quizView.updateTimerDisplay(this.display);
   });
