@@ -1,5 +1,6 @@
 const Request = require('./helpers/request.js');
 const CountriesData = require('./models/countries_data.js');
+const CountdownTimer = require('./models/countdown_timer.js');
 const QuizData = require('./models/quiz_data.js');
 const QuizView = require('./views/quiz_view.js');
 const StartView = require('./views/start_view.js');
@@ -15,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizData = new QuizData(countriesData);
   const quizView = new QuizView(quizContainer);
   const startView = new StartView(quizContainer);
+
+  const timer = new CountdownTimer(10);
+  timer.start();
 
   countriesData.getData(() => {
     newQuizButton.addEventListener('click', () =>  {
