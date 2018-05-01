@@ -4,6 +4,7 @@ const QuizData = require('./models/quiz_data.js');
 const QuizView = require('./views/quiz_view.js');
 const StartView = require('./views/start_view.js');
 
+const leaderboardRequest = new Request('./db/leaderboard');
 let result = {};
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
           result.score = 0;
           result.name = input.value;
           renderNewQuestion(-1, quizData, quizView);
-          console.log(result);
         });
       });
     });
@@ -47,5 +47,6 @@ const renderNewQuestion = function(index, quizData, quizView) {
   }
   else {
     quizView.renderResult(result);
+    leaderboardRequest.post(result, () => {console.log('Successfully wrote to db')});
   }
 }

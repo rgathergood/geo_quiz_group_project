@@ -17,7 +17,7 @@ Request.prototype.get = function (onComplete) {
 
 Request.prototype.post = function(data, onComplete){
   const req = new XMLHttpRequest();
-  req.open('OPEN', this.url);
+  req.open('POST', this.url);
 
   req.setRequestHeader('Content-Type', 'application/json');
 

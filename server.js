@@ -15,11 +15,11 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client){
 
   const db = client.db('geo_quiz');
   console.log('connected to db');
-  const leaderBoardCollection = db.collection('leaderboard');
+  const leaderboardCollection = db.collection('leaderboard');
 
 
   server.get('/db/leaderboard', function (req, res){
-    leaderBoardCollection.find().toArray(function(err, allScores){
+    leaderboardCollection.find().toArray(function(err, allScores){
       if (err){
         console.error(err);
         req.status(500);
@@ -33,7 +33,7 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client){
   server.post('/db/leaderboard', function (req, res){
     const newScore = req.body;
 
-    leaderBoardCollection.save(newScore, function (err, result){
+    leaderboardCollection.save(newScore, function (err, result){
       if (err) {
         console.error(err);
         res.status(500);

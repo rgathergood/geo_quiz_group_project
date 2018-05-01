@@ -49,12 +49,12 @@ QuizView.prototype.renderAnswerButtons = function(question, onCorrectAnswerClick
   }
 }
 
-QuizView.prototype.renderResult = function (score) {
+QuizView.prototype.renderResult = function (result) {
   this.quizContainer.innerHTML = "";
 
   const text = document.createElement('h3');
   text.classList.add('result-text');
-  text.textContent = `Wahoo! You got ${score} out of 10!`;
+  text.textContent = `Congratulations, ${result.name}! You got ${result.score} out of 10!`;
   this.quizContainer.appendChild(text);
 };
 
