@@ -12,15 +12,23 @@ StartView.prototype.renderStart = function (onStartButtonClicked) {
   form.appendChild(text);
 
   const input = document.createElement('input');
-  input.required = true;
   form.appendChild(input);
 
-  const button = document.createElement('button');
+  let button = document.createElement('button');
   button.textContent = "Start";
   button.classList.add('start-quiz-button');
-  button.type = 'submit';
-  onStartButtonClicked(button, input);
+  button.disabled = true;
   form.appendChild(button);
+
+  input.addEventListener('input', function() {
+    button.disabled = false;
+  });
+
+  if (input.value =""){
+    button.disabled = true;
+  }
+
+  onStartButtonClicked(button, input);
 
   this.container.appendChild(form);
 }

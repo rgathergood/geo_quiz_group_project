@@ -48,7 +48,7 @@ button {
   border-radius: 1rem;
 }
 
-button:hover {
+button:hover:not([disabled]) {
   border: 1px solid blue;
 }
 
@@ -95,7 +95,6 @@ button:hover {
   color: white;
 }
 
-button :disabled {
-  opacity: 0.5;
-  color: white;
+button:disabled {
+  opacity: 0.8;
 }
