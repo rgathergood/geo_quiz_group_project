@@ -1,6 +1,7 @@
-const CountdownTimer = function(duration, onComplete) {
+const CountdownTimer = function(duration, onUpdate) {
+  this.display = '';
   this.duration = duration;
-  this.onComplete = onComplete;
+  this.onUpdate = onUpdate;
   this.updateDisplay(duration);
 }
 
@@ -9,14 +10,17 @@ CountdownTimer.prototype.start = function() {
   this.interval = setInterval(() => this.printTimeLeft(), 100);
 }
 
+CountdownTimer.prototype.stop = function() {
+  clearInterval(this.interval);
+}
+
 CountdownTimer.prototype.printTimeLeft = function() {
   const secondsExpired = Math.floor((Date.now() - this.startTime)/1000);
   const totalSecondsLeft = this.duration - secondsExpired;
-  this.updateDisplay(totalSecondsLeft);
+  this.updateDisplayWithCallback(totalSecondsLeft);
 
   if (totalSecondsLeft <= 0) {
-    clearInterval(this.interval);
-    this.onComplete();
+    this.stop();
   }
 }
 
@@ -28,7 +32,11 @@ CountdownTimer.prototype.updateDisplay = function(totalSeconds) {
   seconds = seconds < 10 ? '0' + seconds : seconds;
 
   this.display = timeString = minutes + ':' + seconds;
-  console.log(this.display);
+}
+
+CountdownTimer.prototype.updateDisplayWithCallback = function(totalSeconds) {
+  this.updateDisplay(totalSeconds);
+  this.onUpdate();
 }
 
 module.exports = CountdownTimer;
