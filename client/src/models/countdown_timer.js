@@ -32,7 +32,6 @@ CountdownTimer.prototype.updateDisplay = function(totalSeconds) {
   seconds = seconds < 10 ? '0' + seconds : seconds;
 
   this.display = timeString = minutes + ':' + seconds;
-  console.log(this.display);
 }
 
 CountdownTimer.prototype.updateDisplayWithCallback = function(totalSeconds) {

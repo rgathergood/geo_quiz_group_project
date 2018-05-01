@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const startView = new StartView(quizContainer);
   const resultView = new ResultView(quizContainer);
 
-  const timer = new CountdownTimer(60, function() {
+  const timer = new CountdownTimer(5, function() {
+    if (this.display === '00:00') loadResultsPage(this, resultView)
     quizView.updateTimerDisplay(this.display);
   });
 
@@ -55,9 +56,13 @@ const renderNewQuestion = function(index, quizData, quizView, resultView, timer)
     );
   }
   else {
-    timer.stop();
-    result.timeRemaining = timer.display;
-    resultView.renderResult(result);
-    leaderboardRequest.post(result, () => {console.log('Successfully wrote to db')});
+    loadResultsPage(timer, resultView);
   }
+}
+
+const loadResultsPage = function(timer, resultView) {
+  timer.stop();
+  result.timeRemaining = timer.display;
+  resultView.renderResult(result);
+  leaderboardRequest.post(result, () => {console.log('Successfully wrote to db')});
 }
