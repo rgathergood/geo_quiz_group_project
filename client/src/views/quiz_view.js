@@ -56,7 +56,8 @@ QuizView.prototype.renderAnswerButtons = function(question, onCorrectAnswerClick
         button.classList.add('show-incorrect');
       }
 
-      // nextButton.textContent = 'Next';
+      const nextButton = document.querySelector('.next-button');
+      nextButton.textContent = 'Next';
 
       const buttons = document.querySelectorAll('.answer-button');
       buttons.forEach((button) => button.disabled = true);
@@ -75,7 +76,7 @@ QuizView.prototype.renderResult = function (result) {
 
 QuizView.prototype.createNextButton = function (onNextButtonClicked) {
   const nextButton = document.createElement('button');
-  nextButton.textContent = 'Next';
+  nextButton.textContent = 'Skip';
   nextButton.classList.add('next-button');
   nextButton.addEventListener('click', onNextButtonClicked);
   this.quizContainer.appendChild(nextButton);
