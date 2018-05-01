@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const startView = new StartView(quizContainer);
   const resultView = new ResultView(quizContainer);
 
-  const timer = new CountdownTimer(10);
+  const timer = new CountdownTimer(10, () => console.log('Time\'s up sucker!'));
   timer.start();
 
   countriesData.getData(() => {

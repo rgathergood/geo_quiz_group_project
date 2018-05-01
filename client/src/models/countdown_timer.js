@@ -1,11 +1,12 @@
-const CountdownTimer = function(duration) {
+const CountdownTimer = function(duration, onComplete) {
   this.duration = duration;
+  this.onComplete = onComplete;
 }
 
 CountdownTimer.prototype.start = function() {
   // todo: set display = duration
   this.startTime = Date.now();
-  this.interval = setInterval(() => this.printTimeLeft(), 1000);
+  this.interval = setInterval(() => this.printTimeLeft(), 100);
 }
 
 CountdownTimer.prototype.printTimeLeft = function() {
@@ -23,6 +24,7 @@ CountdownTimer.prototype.printTimeLeft = function() {
 
   if (totalSecondsLeft <= 0) {
     clearInterval(this.interval);
+    this.onComplete();
   }
 
 }
