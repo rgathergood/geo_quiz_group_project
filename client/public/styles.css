@@ -98,3 +98,12 @@ button:hover:not([disabled]) {
 button:disabled {
   opacity: 0.8;
 }
+
+.timer {
+font-family: 'Share Tech Mono', monospace;
+    color: rgb(0,0,0);
+    text-shadow: 0 0 5px rgba(230,10, 10, 1),  0 0 5px rgba(10, 175, 230, 0);
+    letter-spacing: 0.05em;
+    font-size: 40px;
+    padding: 5px 0;
+}
