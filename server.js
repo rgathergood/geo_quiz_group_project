@@ -18,14 +18,27 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client){
   }
 
   const db = client.db('geo_quiz');
-  console.log('connected to db');
+  console.log('Connected to db');
   const leaderboardCollection = db.collection('leaderboard');
 
+  // get anthems
   const anthemsCollection = db.collection('anthems');
   scraper.scrape(() => {
-    anthemsCollection.drop(null, (err, result) => console.log(err));
-    anthemsCollection.save(scraper.data, null, (err, result) => console.log(err));
-    console.log('done scraping');
+    console.log('Finished scraping for anthems');
+    anthemsCollection.drop(null, (err, result) => {
+      if (err) console.log(err);
+    });
+
+    for (let country in scraper.data) {
+      const newEntry = {
+        "name": country,
+        "anthem": scraper.data[country]
+      }
+      anthemsCollection.save(newEntry, null, (err, result) => {
+        if (err) console.log(err);
+      });
+    }
+    console.log('Updated anthems collection');
   });
 
 

@@ -15,9 +15,7 @@ AnthemScraper.prototype.scrape = function(onComplete) {
     alphabet.forEach((letter) => {
       const dropDown = cheerio('#' + letter + 'drop');
       this.getAudios(dropDown);
-      console.log('getting missing audios...');
       this.checkUrls(onComplete);
-      console.log(`Completed AnthemScraper.prototype.scrape for letter ${letter}.`);
     });
   })
   .catch((err) => {
@@ -51,7 +49,6 @@ AnthemScraper.prototype.checkUrls = function(onComplete) {
 };
 
 AnthemScraper.prototype.getMissingAudios = function(href, countryName, onComplete) {
-  console.log(`lefttoprocess at beginning: ${this.leftToProcess}`);
   reqPromise(href)
   .then((html) => {
     const cheerio = Cheerio.load(html);
@@ -62,7 +59,6 @@ AnthemScraper.prototype.getMissingAudios = function(href, countryName, onComplet
   })
   .catch((err) => {
     console.log(`AnthemScraper: getMissingAudios request failed for ${href}:`);
-    // console.log(err);
   });
 }
 
