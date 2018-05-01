@@ -1,9 +1,15 @@
 const QuizView = function(quizContainer) {
   this.quizContainer = quizContainer;
+  // this.timer = timer;
 }
 
 QuizView.prototype.renderQuestion = function (question, onNextButtonClicked, onCorrectAnswerClicked) {
   this.quizContainer.innerHTML = "";
+
+  const timerDisplay = document.createElement('h2');
+  timerDisplay.classList.add('timer');
+  // timerDisplay.textContent = this.timer.display;
+  this.quizContainer.appendChild(timerDisplay);
 
   const text = document.createElement('h3');
   text.classList.add('question-text');
@@ -18,6 +24,11 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked, onC
   this.renderAnswerButtons(question, onCorrectAnswerClicked);
   this.createNextButton(onNextButtonClicked);
 
+};
+
+QuizView.prototype.updateTimerDisplay = function (timeString) {
+  const timerDisplay = document.querySelector('.timer');
+  timerDisplay.textContent = timeString;
 };
 
 QuizView.prototype.renderAnswerButtons = function(question, onCorrectAnswerClicked) {

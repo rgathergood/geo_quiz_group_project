@@ -19,8 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const startView = new StartView(quizContainer);
   const resultView = new ResultView(quizContainer);
 
-  const timer = new CountdownTimer(10, () => console.log('Time\'s up sucker!'));
-  setTimeout(() => timer.start(), 10000);
+  const timer = new CountdownTimer(60, function() {
+    quizView.updateTimerDisplay(this.display);
+  });
 
   countriesData.getData(() => {
     newQuizButton.addEventListener('click', () =>  {
@@ -30,7 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
           quizData.generateQuiz();
           result.score = 0;
           result.name = input.value;
-          renderNewQuestion(-1, quizData, quizView, resultView);
+
+          renderNewQuestion(-1, quizData, quizView, resultView, timer);
+          timer.start();
         });
       });
     });
@@ -41,17 +44,19 @@ const incrementScore = function() {
   result.score += 1;
 }
 
-const renderNewQuestion = function(index, quizData, quizView, resultView) {
+const renderNewQuestion = function(index, quizData, quizView, resultView, timer) {
   if (index < quizData.questions.length - 1) {
     quizView.renderQuestion(
       quizData.questions[index + 1],
       () => {
-        renderNewQuestion(index + 1, quizData, quizView, resultView);
+        renderNewQuestion(index + 1, quizData, quizView, resultView, timer);
       },
       incrementScore
     );
   }
   else {
+    timer.stop();
+    result.timeRemaining = timer.display;
     resultView.renderResult(result);
     leaderboardRequest.post(result, () => {console.log('Successfully wrote to db')});
   }
