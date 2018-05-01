@@ -68,6 +68,5 @@ const renderNewQuestion = function(index, quizData, quizView, resultView, timer)
 const loadResultsPage = function(timer, resultView) {
   timer.stop();
   result.timeRemaining = timer.display;
-  resultView.renderResult(result);
-  leaderboardRequest.post(result, () => {/*console.log('Successfully wrote to db')*/});
+  leaderboardRequest.post(result, () => {resultView.renderResult(result)});
 }
