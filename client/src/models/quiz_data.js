@@ -17,7 +17,7 @@ QuizData.prototype.generateQuiz = function(){
 QuizData.prototype.generateQuestion = function (rightAnswer, wrongAnswers) {
   let question = {};
 
-  question.text = 'What country does this flag belong to?';
+  question.text = 'Which country does this flag belong to?';
   question.imgUrl = rightAnswer.flag;
   question.correctIndex = Math.floor(Math.random() * (wrongAnswers.length + 1));
 
