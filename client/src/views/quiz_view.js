@@ -2,8 +2,12 @@ const QuizView = function(quizContainer) {
   this.quizContainer = quizContainer;
 }
 
-QuizView.prototype.renderQuestion = function (question, onNextButtonClicked, onCorrectAnswerClicked) {
+QuizView.prototype.renderQuestion = function (index, question, onNextButtonClicked, onCorrectAnswerClicked) {
   this.quizContainer.innerHTML = "";
+
+  const timerDisplay = document.createElement('h2');
+  timerDisplay.classList.add('timer');
+  this.quizContainer.appendChild(timerDisplay);
 
   const text = document.createElement('h3');
   text.classList.add('question-text');
@@ -15,9 +19,18 @@ QuizView.prototype.renderQuestion = function (question, onNextButtonClicked, onC
   image.src = question.imgUrl;
   this.quizContainer.appendChild(image);
 
+  const counter = document.createElement('p');
+  counter.classList.add('counter');
+  counter.textContent = `${index} of 10`;
+  this.quizContainer.appendChild(counter);
+
   this.renderAnswerButtons(question, onCorrectAnswerClicked);
   this.createNextButton(onNextButtonClicked);
+};
 
+QuizView.prototype.updateTimerDisplay = function (timeString) {
+  const timerDisplay = document.querySelector('.timer');
+  if (timerDisplay !== null) timerDisplay.textContent = timeString;
 };
 
 QuizView.prototype.renderAnswerButtons = function(question, onCorrectAnswerClicked) {
@@ -43,6 +56,9 @@ QuizView.prototype.renderAnswerButtons = function(question, onCorrectAnswerClick
         button.classList.add('show-incorrect');
       }
 
+      const nextButton = document.querySelector('.next-button');
+      nextButton.textContent = 'Next';
+
       const buttons = document.querySelectorAll('.answer-button');
       buttons.forEach((button) => button.disabled = true);
     });
@@ -60,7 +76,7 @@ QuizView.prototype.renderResult = function (result) {
 
 QuizView.prototype.createNextButton = function (onNextButtonClicked) {
   const nextButton = document.createElement('button');
-  nextButton.textContent = 'Next';
+  nextButton.textContent = 'Skip';
   nextButton.classList.add('next-button');
   nextButton.addEventListener('click', onNextButtonClicked);
   this.quizContainer.appendChild(nextButton);
