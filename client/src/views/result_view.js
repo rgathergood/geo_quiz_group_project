@@ -1,9 +1,14 @@
+const Request = require('../helpers/request.js');
+
+const leaderboardRequest = new Request('./db/leaderboard');
+
 const ResultView = function (container) {
   this.container = container;
 }
 
 ResultView.prototype.renderResult = function (result) {
   this.container.innerHTML = "";
+
 
   const text = document.createElement('h3');
   text.classList.add('result-text');
@@ -20,11 +25,17 @@ ResultView.prototype.renderResult = function (result) {
   nameHeader.innerHTML = 'Name';
   scoreHeader.innerHTML = 'Score';
 
-  const resultsRow = table.insertRow(1);
-  const playerName = resultsRow.insertCell(0);
-  const playerScore = resultsRow.insertCell(1);
-  playerName.innerHTML = `${result.name}`;
-  playerScore.innerHTML = `${result.score}`;
+  const getScoresRequestComplete = function (allScores) {
+    for (let i = 0; i < allScores.length; i++) {
+      const resultsRow = table.insertRow(i + 1);
+      const playerName = resultsRow.insertCell(0);
+      const playerScore = resultsRow.insertCell(1);
+      playerName.innerHTML = `${allScores[i].name}`;
+      playerScore.innerHTML = `${allScores[i].score}`;
+    }
+  }
+
+  leaderboardRequest.get(getScoresRequestComplete);
 
 };
 
