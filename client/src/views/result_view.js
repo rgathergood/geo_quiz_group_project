@@ -28,11 +28,18 @@ ResultView.prototype.renderResult = function (result) {
   scoreHeader.innerHTML = 'Score';
 
   const getScoresRequestComplete = function (allScores) {
+    for (let i = 0; i < allScores.length; i++) {
+      allScores[i].oldindex = i;
+    }
     const sortedScores = allScores.sort((a, b) => b.score - a.score);
     for (let i = 0; i < sortedScores.length; i++) {
       const resultsRow = table.insertRow(i + 1);
       const playerName = resultsRow.insertCell(0);
       const playerScore = resultsRow.insertCell(1);
+      if (sortedScores[i].oldindex === sortedScores.length - 1) {
+        playerName.classList.add('new-entry');
+        playerScore.classList.add('new-entry');
+      }
       playerName.innerHTML = `${sortedScores[i].name}`;
       playerScore.innerHTML = `${sortedScores[i].score}`;
     }
