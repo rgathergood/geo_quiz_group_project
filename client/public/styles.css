@@ -2,6 +2,16 @@ body {
   font-family: 'Gothic A1', sans-serif;
 }
 
+.progress-bar {
+  background-color: blue;
+  height: 20px;
+}
+
+.progress-container {
+  background-color: grey;
+  width: 400px;
+}
+
 h1 {
   text-align: center;
 }
