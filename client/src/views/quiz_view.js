@@ -5,6 +5,8 @@ const QuizView = function(quizContainer) {
 QuizView.prototype.renderQuestion = function (index, question, onNextButtonClicked, onCorrectAnswerClicked) {
   this.quizContainer.innerHTML = "";
 
+  const flexBoxContainer2 = document.createElement('div');
+
   const timerDisplay = document.createElement('h2');
   timerDisplay.classList.add('timer');
   this.quizContainer.appendChild(timerDisplay);
@@ -12,17 +14,22 @@ QuizView.prototype.renderQuestion = function (index, question, onNextButtonClick
   const text = document.createElement('h3');
   text.classList.add('question-text');
   text.textContent = question.text;
-  this.quizContainer.appendChild(text);
+  flexBoxContainer2.appendChild(text);
+  // this.quizContainer.appendChild(text);
 
   const image = document.createElement('img');
   image.classList.add('question-image');
   image.src = question.imgUrl;
-  this.quizContainer.appendChild(image);
+  flexBoxContainer2.appendChild(image);
+  // this.quizContainer.appendChild(image);
 
   const counter = document.createElement('p');
   counter.classList.add('counter');
   counter.textContent = `${index} of 10`;
-  this.quizContainer.appendChild(counter);
+  flexBoxContainer2.appendChild(counter);
+  // this.quizContainer.appendChild(counter);
+
+  this.quizContainer.appendChild(flexBoxContainer2);
 
   this.renderAnswerButtons(question, onCorrectAnswerClicked);
   this.createNextButton(onNextButtonClicked);

@@ -5,6 +5,8 @@ const StartView = function(container) {
 StartView.prototype.renderStart = function (onStartButtonClicked) {
   this.container.innerHTML = "";
 
+  const flexBoxContainer1 = document.createElement('div');
+
   const form = document.createElement('form');
 
   const text = document.createElement('h3');
@@ -19,6 +21,7 @@ StartView.prototype.renderStart = function (onStartButtonClicked) {
   button.classList.add('start-quiz-button');
   button.disabled = true;
   form.appendChild(button);
+  flexBoxContainer1.appendChild(form);
 
   input.addEventListener('input', function() {
     button.disabled = false;
@@ -26,7 +29,7 @@ StartView.prototype.renderStart = function (onStartButtonClicked) {
 
   onStartButtonClicked(button, input);
 
-  this.container.appendChild(form);
+  this.container.appendChild(flexBoxContainer1);
 }
 
 module.exports = StartView;
