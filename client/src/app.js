@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
           result.score = 0;
           result.name = input.value;
 
-          renderNewQuestion(0, quizData, quizView, resultView, timer); //set index to 0
+          renderNewQuestion(0, quizData, quizView, resultView, timer);
           timer.start();
         });
       });
