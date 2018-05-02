@@ -52,6 +52,18 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client){
     });
   });
 
+  server.get('/db/anthems', function (req, res){
+    anthemsCollection.find().toArray(function(err, allAnthems){
+      if (err){
+        console.error(err);
+        req.status(500);
+        res.send();
+        return;
+      }
+      res.json(allAnthems);
+    });
+  });
+
   server.listen(3000, function () {
     console.log('Listening on port 3000');
   });

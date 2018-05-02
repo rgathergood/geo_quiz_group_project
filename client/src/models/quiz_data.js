@@ -1,5 +1,3 @@
-
-
 const QuizData = function(countriesData){
   this.countriesData = countriesData;
 }
