@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const newQuizButton = document.querySelector("#new-quiz-button");
   const quizContainer = document.querySelector("#quiz-container");
   const audioContainer = document.querySelector("#audio-container");
+  const anthemPlayer = document.querySelector('#anthem-player');
 
   const countriesData = new CountriesData();
   const quizData = new QuizData(countriesData);
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizView = new QuizView(quizContainer);
   const startView = new StartView(quizContainer);
   const resultView = new ResultView(quizContainer);
-  const audioView = new AudioView(audioContainer, audioData);
+  const audioView = new AudioView(audioContainer, anthemPlayer, audioData);
 
   const timer = new CountdownTimer(60, function() {
     if (this.display === '00:00') {
@@ -40,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     countriesData.getData(() => {
 
       audioView.render();
-      console.dir(audioData.data);
 
       newQuizButton.addEventListener('click', () =>  {
         startView.renderStart((startButton, input) =>  {
