@@ -28,6 +28,35 @@ h3 {
   display: block;
 }
 
+h4 {
+  font-size: 80%;
+  display: inline-block;
+  color: darkgray;
+}
+
+#audio-container {
+  margin-top: 0;
+  margin-top: -10px;
+  margin-right: 10px;
+  right: 0;
+  position: absolute;
+}
+
+.next-track-button {
+  margin: auto;
+  margin-top: -10px;
+  margin-left: 10px;
+  display: inline-block;
+  font-size: 80%;
+  opacity: 0.5;
+}
+
+.next-track-button:hover {
+  color: white;
+  background-color: #307b93;
+  opacity: 1;
+}
+
 input {
   margin: auto;
   margin-top: 1rem;
@@ -42,10 +71,6 @@ input {
   margin-top: 1rem;
   display: block;
   padding: 0.5rem 1rem;
-}
-
-#quiz-container {
-
 }
 
 .question-image {
