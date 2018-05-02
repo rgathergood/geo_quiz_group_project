@@ -6,16 +6,6 @@ h1 {
   text-align: center;
 }
 
-.flexBoxContainer1 {
-  border: solid 2px black;
-
-}
-
-.flexBoxContainer2 {
-  border: solid 5px aqua;
-}
-
-
 h3 {
   margin-top: 1rem;
   text-align: center;
@@ -146,12 +136,4 @@ tr {
   text-align: center;
   border: 1px solid blue;
   color: blue;
-}
-
-@media all and ( min-width: 960px ) {
-
-  .flexBoxContainer1 {
-    flex-direction: row;
-  }
-
 }

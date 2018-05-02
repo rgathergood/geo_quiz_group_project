@@ -4,36 +4,46 @@ const QuizView = function(quizContainer) {
 
 QuizView.prototype.renderQuestion = function (index, question, onNextButtonClicked, onCorrectAnswerClicked) {
   this.quizContainer.innerHTML = "";
+  this.questionContainer = document.createElement('div');
+  this.flexboxContainer = document.createElement('div');
+  this.flagContainer = document.createElement('div');
+  this.buttonContainer = document.createElement('div');
+  this.quizContainer.appendChild(this.questionContainer);
+  this.quizContainer.appendChild(this.flexboxContainer);
+  this.quizContainer.appendChild(this.flagContainer);
+  this.quizContainer.appendChild(this.buttonContainer);
 
-  const flexBoxContainer2 = document.createElement('div');
-
+  console.log(1);
+  this.questionContainer.innerHTML = "";
+  this.flexboxContainer.innerHTML = "";
+  this.flagContainer.innerHTML = "";
+  this.buttonContainer.innerHTML = "";
+  console.log(2);
   const timerDisplay = document.createElement('h2');
   timerDisplay.classList.add('timer');
-  this.quizContainer.appendChild(timerDisplay);
-
+  this.questionContainer.appendChild(timerDisplay);
+console.log(3);
   const text = document.createElement('h3');
   text.classList.add('question-text');
   text.textContent = question.text;
-  flexBoxContainer2.appendChild(text);
+  this.questionContainer.appendChild(text);
   // this.quizContainer.appendChild(text);
-
+console.log(4);
   const image = document.createElement('img');
   image.classList.add('question-image');
   image.src = question.imgUrl;
-  flexBoxContainer2.appendChild(image);
+  this.flagContainer.appendChild(image);
   // this.quizContainer.appendChild(image);
-
+console.log(5);
   const counter = document.createElement('p');
   counter.classList.add('counter');
   counter.textContent = `${index} of 10`;
-  flexBoxContainer2.appendChild(counter);
-  // this.quizContainer.appendChild(counter);
-
-  //added flexBoxContainer2 to quizContainer
-  this.quizContainer.appendChild(flexBoxContainer2);
-
+  this.questionContainer.appendChild(counter);
+console.log(6);
   this.renderAnswerButtons(question, onCorrectAnswerClicked);
+  console.log(7);
   this.createNextButton(onNextButtonClicked);
+  console.log(8);
 };
 
 QuizView.prototype.updateTimerDisplay = function (timeString) {
@@ -42,6 +52,7 @@ QuizView.prototype.updateTimerDisplay = function (timeString) {
 };
 
 QuizView.prototype.renderAnswerButtons = function(question, onCorrectAnswerClicked) {
+
   for(let i = 0; i < question.answers.length; i++) {
     const button = document.createElement('button');
     button.classList.add('answer-button');
@@ -51,7 +62,7 @@ QuizView.prototype.renderAnswerButtons = function(question, onCorrectAnswerClick
       button.classList.add('incorrect-answer');
     }
     button.textContent = question.answers[i];
-    this.quizContainer.appendChild(button);
+    this.buttonContainer.appendChild(button);
 
     button.addEventListener('click', ()  =>  {
       const correctBtn = document.querySelector('.correct-answer');
@@ -74,12 +85,14 @@ QuizView.prototype.renderAnswerButtons = function(question, onCorrectAnswerClick
 }
 
 QuizView.prototype.renderResult = function (result) {
+
   this.quizContainer.innerHTML = "";
 
   const text = document.createElement('h3');
   text.classList.add('result-text');
   text.textContent = `Congratulations, ${result.name}! You got ${result.score} out of 10!`;
-  this.quizContainer.appendChild(text);
+  flexBoxContainerRight.appendChild(text);
+  this.quizContainer.appendChild(flexBoxContainerRight);
 };
 
 QuizView.prototype.createNextButton = function (onNextButtonClicked) {
@@ -87,7 +100,7 @@ QuizView.prototype.createNextButton = function (onNextButtonClicked) {
   nextButton.textContent = 'Skip';
   nextButton.classList.add('next-button');
   nextButton.addEventListener('click', onNextButtonClicked);
-  this.quizContainer.appendChild(nextButton);
+  this.buttonContainer.appendChild(nextButton);
 };
 
 module.exports = QuizView;
