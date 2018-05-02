@@ -14,7 +14,7 @@ ResultView.prototype.renderResult = function (result) {
   const text = document.createElement('h3');
   text.classList.add('result-text');
   const message = this.customMessage(result);
-  text.textContent = `${message}, ${result.name}! You got ${result.score} out of 10!`;
+  text.textContent = `${message}, ${result.name}! You got ${result.score} out of 10 with ${result.timeRemaining} seconds remaining!`;
   this.container.appendChild(text);
 
   const table = document.createElement('table');
@@ -25,24 +25,34 @@ ResultView.prototype.renderResult = function (result) {
   row.classList.add('name-score-row');
   const nameHeader = row.insertCell(0);
   const scoreHeader = row.insertCell(1);
+  const timeHeader = row.insertCell(2);
   nameHeader.innerHTML = 'Name';
   scoreHeader.innerHTML = 'Score';
+  timeHeader.innerHTML = 'Seconds Remaining';
 
   const getScoresRequestComplete = function (allScores) {
     for (let i = 0; i < allScores.length; i++) {
       allScores[i].oldindex = i;
     }
-    const sortedScores = allScores.sort((a, b) => b.score - a.score);
+
+    console.log(allScores);
+
+    const sortedScores = allScores.sort(function(a, b) {
+      return b.score - a.score  ||  b.remainingTime - a.remainingTime;
+    });
+
     for (let i = 0; i < sortedScores.length; i++) {
       const resultsRow = table.insertRow(i + 1);
       const playerName = resultsRow.insertCell(0);
       const playerScore = resultsRow.insertCell(1);
+      const playerRemainingTime = resultsRow.insertCell(2);
       if (sortedScores[i].oldindex === sortedScores.length - 1) {
         playerName.classList.add('new-entry');
         playerScore.classList.add('new-entry');
       }
       playerName.innerHTML = `${sortedScores[i].name}`;
       playerScore.innerHTML = `${sortedScores[i].score}`;
+      playerRemainingTime.innerHTML = `${sortedScores[i].timeRemaining}`;
     }
   }
   leaderboardRequest.get(getScoresRequestComplete);

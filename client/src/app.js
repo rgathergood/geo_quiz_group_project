@@ -65,9 +65,10 @@ const renderNewQuestion = function(index, quizData, quizView, resultView, timer)
 }
 
 const loadResultsPage = function(timer, resultView) {
-  console.log("gets to loadResultsPage");
   timer.stop();
-  console.log('timer stops on results load');
-  result.timeRemaining = timer.display;
+  const a = timer.display.split(':');
+  const secondsRemaining = Number(a[0] * 60 + a[1]);
+  result.timeRemaining = secondsRemaining;
+
   leaderboardRequest.post(result, () => resultView.renderResult(result));
 }
