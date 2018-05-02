@@ -2,18 +2,26 @@ body {
   font-family: 'Gothic A1', sans-serif;
 }
 
+.background {
+  background: url(images/background-image1.png)no-repeat center center fixed;
+  background-size: cover;
+  color: grey;
+  background-position: center top;
+  background-blend-mode: lighten;
+  height: 100%;
+}
+
 h1 {
   text-align: center;
 }
 
 h3 {
-  margin-top: 1rem;
   text-align: center;
   display: block;
 }
 
 header {
-  border-bottom: 5px solid blue;
+  /* border-bottom: 5px solid blue; */
 }
 
 input {
@@ -33,7 +41,7 @@ input {
 }
 
 #quiz-container {
-  margin: 2rem;
+
 }
 
 .question-image {
