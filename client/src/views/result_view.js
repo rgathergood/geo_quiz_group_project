@@ -11,11 +11,16 @@ const customMessages = ['Oh dear', 'Not bad', 'Good Job', 'Amazing', 'Incredible
 ResultView.prototype.renderResult = function (result) {
   this.container.innerHTML = "";
 
-  const text = document.createElement('h2');
-  text.classList.add('result-text');
+  const messageText = document.createElement('h2');
+  messageText.classList.add('result-text');
   const message = this.customMessage(result);
-  text.textContent = `${message}, ${result.name}! You got ${result.score} out of 10 with ${result.timeRemaining} seconds remaining!`;
-  this.container.appendChild(text);
+  messageText.textContent = `${message}, ${result.name}!`;
+  this.container.appendChild(messageText);
+
+  const scoreText = document.createElement('h2');
+  scoreText.classList.add('result-text');
+  scoreText.textContent = `You got ${result.score} out of 10 with ${result.timeRemaining} seconds remaining!`;
+  this.container.appendChild(scoreText);
 
   const table = document.createElement('table');
   table.classList.add('results-table');
@@ -28,7 +33,7 @@ ResultView.prototype.renderResult = function (result) {
   const timeHeader = row.insertCell(2);
   nameHeader.innerHTML = 'Name';
   scoreHeader.innerHTML = 'Score';
-  timeHeader.innerHTML = 'Seconds Remaining';
+  timeHeader.innerHTML = 'Time Left';
 
   const getScoresRequestComplete = function (allScores) {
     for (let i = 0; i < allScores.length; i++) {
@@ -49,6 +54,7 @@ ResultView.prototype.renderResult = function (result) {
       if (sortedScores[i].oldindex === sortedScores.length - 1) {
         playerName.classList.add('new-entry');
         playerScore.classList.add('new-entry');
+        playerRemainingTime.classList.add('new-entry');
       }
       playerName.innerHTML = `${sortedScores[i].name}`;
       playerScore.innerHTML = `${sortedScores[i].score}`;
