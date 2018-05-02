@@ -33,7 +33,7 @@ ResultView.prototype.renderResult = function (result) {
   const timeHeader = row.insertCell(2);
   nameHeader.innerHTML = 'Name';
   scoreHeader.innerHTML = 'Score';
-  timeHeader.innerHTML = 'Time Left';
+  timeHeader.innerHTML = 'Time Left (s)';
 
   const getScoresRequestComplete = function (allScores) {
     for (let i = 0; i < allScores.length; i++) {
