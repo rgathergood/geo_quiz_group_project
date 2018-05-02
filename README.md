@@ -1,4 +1,4 @@
-# Geo Quiz Group Project
+# Vex Yourself - Flag Quiz - Group Project
 Week 14 Group Project
 
 # Educational App
@@ -15,7 +15,7 @@ Your task is to make an MVP to put forward to them - this may only be for a smal
 - Display some information about a particular topic in an interesting way
 - Have some user interactivity using event listeners, e.g to move through different sections of content
 
-##How to run
+## How to run
 
 To run our app you'll have to do the following:
 
