@@ -106,9 +106,10 @@ button:hover:not([disabled]) {
 }
 
 .next-button {
-  margin: 1rem;
-  margin-left: 5rem;
   float: right;
+  margin-top: 1rem;
+  margin-right: 12rem;
+  margin-bottom: 2rem;
   width: 150px;
   display: inline-block;
   padding: 0.5rem;
