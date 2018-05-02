@@ -12,7 +12,6 @@ CountdownTimer.prototype.start = function() {
 
 CountdownTimer.prototype.stop = function() {
   clearInterval(this.interval);
-  console.log('Timer stopped');
 }
 
 CountdownTimer.prototype.printTimeLeft = function() {
