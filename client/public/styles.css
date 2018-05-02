@@ -121,7 +121,7 @@ button:disabled {
   width: 400px;
   margin: auto;
   margin-top: 2rem;
-  font-size: 120%;
+  font-size: 140%;
   border: 1px solid blue;
   border-radius: 5px;
   padding: 1rem;
@@ -136,4 +136,8 @@ tr {
   text-align: center;
   border: 1px solid blue;
   color: blue;
+}
+
+.new-entry {
+  background-color: lightblue;
 }
