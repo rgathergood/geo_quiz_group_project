@@ -14,7 +14,7 @@ AudioView.prototype.render = function () {
 
 AudioView.prototype.nextTrack = function() {
   this.index++;
-  if (this.index === this.audioData.length) this.index = 0;
+  if (this.index === this.audioData.data.length) this.index = 0;
   this.audioPlayer.src = this.audioData.data[this.index].anthem;
   this.refreshDisplay();
 }
@@ -33,6 +33,8 @@ AudioView.prototype.refreshDisplay = function () {
   nextTrackButton.textContent = 'Next';
   nextTrackButton.classList.add('next-track-button');
   audioDisplay.appendChild(nextTrackButton);
+
+  nextTrackButton.addEventListener('click', () => this.nextTrack());
 };
 
 module.exports = AudioView;
