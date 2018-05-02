@@ -65,13 +65,14 @@ button:hover:not([disabled]) {
   border: 1px solid #307b93;
 }
 
-
 #new-quiz-button {
   display: block;
   text-align: center;
   margin: auto;
   margin-bottom: 0.5rem;
   padding: 0.5rem;
+  width: 200px;
+  border-radius: 2rem;
 }
 
 #new-quiz-button:hover {
@@ -79,7 +80,11 @@ button:hover:not([disabled]) {
   background-color: #307b93;
 }
 
-.start-quiz-button:hover {
+.start-quiz-button {
+  width: 150px;
+}
+
+.start-quiz-button:hover:not([disabled]) {
   color: white;
   background-color: #307b93;
 }
