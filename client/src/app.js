@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
           result.score = 0;
           result.name = input.value;
 
-          renderNewQuestion(0, quizData, quizView, resultView, timer); //set index to 0
+          renderNewQuestion(0, quizData, quizView, resultView, timer);
           timer.start();
         });
       });
@@ -65,9 +65,7 @@ const renderNewQuestion = function(index, quizData, quizView, resultView, timer)
 }
 
 const loadResultsPage = function(timer, resultView) {
-  console.log(timer.display);
   timer.stop();
-  console.log("timer stopped");
   result.timeRemaining = timer.display;
   leaderboardRequest.post(result, () => {resultView.renderResult(result)});
 }
