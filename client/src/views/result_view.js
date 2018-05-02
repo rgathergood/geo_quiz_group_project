@@ -43,7 +43,7 @@ ResultView.prototype.renderResult = function (result) {
     console.log(allScores);
 
     const sortedScores = allScores.sort(function(a, b) {
-      return b.score - a.score  ||  b.remainingTime - a.remainingTime;
+      return b.score - a.score  ||  b.timeRemaining - a.timeRemaining;
     });
 
     for (let i = 0; i < sortedScores.length; i++) {
