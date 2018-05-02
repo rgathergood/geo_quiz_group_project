@@ -11,8 +11,9 @@ body {
   height: 100%;
 }
 
-h1 {
-  text-align: center;
+#logo {
+  display: block;
+  margin: auto;
 }
 
 h3 {
@@ -58,7 +59,7 @@ button {
 }
 
 button:hover:not([disabled]) {
-  border: 1px solid blue;
+  border: 1px solid lightblue;
 }
 
 
@@ -130,7 +131,7 @@ button:disabled {
   margin: auto;
   margin-top: 2rem;
   font-size: 140%;
-  border: 1px solid blue;
+  border: 1px solid lightblue;
   border-radius: 5px;
   padding: 1rem;
 }
@@ -142,8 +143,7 @@ tr {
 .name-score-row {
   font-weight: bolder;
   text-align: center;
-  border: 1px solid blue;
-  color: blue;
+  border: 1px solid lightblue;
 }
 
 .new-entry {
