@@ -8,6 +8,7 @@ const AudioData = require('./models/audio_data.js');
 const QuizView = require('./views/quiz_view.js');
 const StartView = require('./views/start_view.js');
 const ResultView = require('./views/result_view.js');
+const AudioView = require('./views/audio_view.js');
 
 const leaderboardRequest = new Request('./db/leaderboard');
 
@@ -16,6 +17,7 @@ let result = {};
 document.addEventListener('DOMContentLoaded', () => {
   const newQuizButton = document.querySelector("#new-quiz-button");
   const quizContainer = document.querySelector("#quiz-container");
+  const audioContainer = document.querySelector("#audio-container");
 
   const countriesData = new CountriesData();
   const quizData = new QuizData(countriesData);
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const quizView = new QuizView(quizContainer);
   const startView = new StartView(quizContainer);
   const resultView = new ResultView(quizContainer);
+  const audioView = new AudioView(audioContainer, audioData);
 
   const timer = new CountdownTimer(60, function() {
     if (this.display === '00:00') {
@@ -36,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   audioData.getData(() => {
     countriesData.getData(() => {
 
-      // create audio player here
+      audioView.render();
       console.dir(audioData.data);
 
       newQuizButton.addEventListener('click', () =>  {
