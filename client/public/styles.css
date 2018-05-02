@@ -17,6 +17,12 @@ body {
   width: auto;
 }
 
+h2 {
+  text-align: center;
+  display: block;
+  font-size: 150%;
+}
+
 h3 {
   text-align: center;
   display: block;
@@ -68,6 +74,16 @@ button:hover:not([disabled]) {
   padding: 0.5rem;
 }
 
+#new-quiz-button:hover {
+  color: white;
+  background-color: #307b93;
+}
+
+.start-quiz-button:hover {
+  color: white;
+  background-color: #307b93;
+}
+
 .correct-answer {
   margin: auto;
   margin-top: 1rem;
@@ -93,6 +109,11 @@ button:hover:not([disabled]) {
   padding: 0.5rem;
 }
 
+.next-button:hover {
+  color: white;
+  background-color: #307b93;
+}
+
 .show-correct {
   background-color: green;
   color: white;
@@ -110,7 +131,7 @@ button:disabled {
 .timer {
   font-family: 'Share Tech Mono', monospace;
   color: rgb(0,0,0);
-  text-shadow: 0 0 5px rgba(230,10, 10, 1),  0 0 5px rgba(10, 175, 230, 0);
+  text-shadow: 0 0 5px #307b93,  0 0 5px rgba(10, 175, 230, 0);
   letter-spacing: 0.05em;
   font-size: 40px;
   padding: 5px 0;
