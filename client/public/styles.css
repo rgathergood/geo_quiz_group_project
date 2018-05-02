@@ -2,18 +2,30 @@ body {
   font-family: 'Gothic A1', sans-serif;
 }
 
-h1 {
+.background {
+  background: url(images/background-image1.png)no-repeat center center fixed;
+  background-size: cover;
+  background-position: center top;
+  background-blend-mode: lighten;
+  height: 100%;
+}
+
+#logo {
+  display: block;
+  margin: auto;
+  height: 150px;
+  width: auto;
+}
+
+h2 {
   text-align: center;
+  display: block;
+  font-size: 150%;
 }
 
 h3 {
-  margin-top: 1rem;
   text-align: center;
   display: block;
-}
-
-header {
-  border-bottom: 5px solid blue;
 }
 
 input {
@@ -33,7 +45,7 @@ input {
 }
 
 #quiz-container {
-  margin: 2rem;
+
 }
 
 .question-image {
@@ -50,9 +62,8 @@ button {
 }
 
 button:hover:not([disabled]) {
-  border: 1px solid blue;
+  border: 1px solid #307b93;
 }
-
 
 #new-quiz-button {
   display: block;
@@ -60,6 +71,22 @@ button:hover:not([disabled]) {
   margin: auto;
   margin-bottom: 0.5rem;
   padding: 0.5rem;
+  width: 200px;
+  border-radius: 2rem;
+}
+
+#new-quiz-button:hover {
+  color: white;
+  background-color: #307b93;
+}
+
+.start-quiz-button {
+  width: 150px;
+}
+
+.start-quiz-button:hover:not([disabled]) {
+  color: white;
+  background-color: #307b93;
 }
 
 .correct-answer {
@@ -79,12 +106,18 @@ button:hover:not([disabled]) {
 }
 
 .next-button {
-  margin: 1rem;
-  margin-left: 5rem;
   float: right;
+  margin-top: 1rem;
+  margin-right: 12rem;
+  margin-bottom: 2rem;
   width: 150px;
   display: inline-block;
   padding: 0.5rem;
+}
+
+.next-button:hover {
+  color: white;
+  background-color: #307b93;
 }
 
 .show-correct {
@@ -104,7 +137,7 @@ button:disabled {
 .timer {
   font-family: 'Share Tech Mono', monospace;
   color: rgb(0,0,0);
-  text-shadow: 0 0 5px rgba(230,10, 10, 1),  0 0 5px rgba(10, 175, 230, 0);
+  text-shadow: 0 0 5px #307b93,  0 0 5px rgba(10, 175, 230, 0);
   letter-spacing: 0.05em;
   font-size: 40px;
   padding: 5px 0;
@@ -121,8 +154,8 @@ button:disabled {
   width: 400px;
   margin: auto;
   margin-top: 2rem;
-  font-size: 120%;
-  border: 1px solid blue;
+  font-size: 140%;
+  border: 1px solid #307b93;
   border-radius: 5px;
   padding: 1rem;
 }
@@ -134,6 +167,11 @@ tr {
 .name-score-row {
   font-weight: bolder;
   text-align: center;
-  border: 1px solid blue;
-  color: blue;
+  border: 1px solid #307b93;
+  color: #307b93;
+}
+
+.new-entry {
+  background-color: #307b93;
+  color: white;
 }

@@ -11,7 +11,7 @@ const customMessages = ['Oh dear', 'Not bad', 'Good Job', 'Amazing', 'Incredible
 ResultView.prototype.renderResult = function (result) {
   this.container.innerHTML = "";
 
-  const text = document.createElement('h3');
+  const text = document.createElement('h2');
   text.classList.add('result-text');
   const message = this.customMessage(result);
   text.textContent = `${message}, ${result.name}! You got ${result.score} out of 10 with ${result.timeRemaining} seconds remaining!`;
