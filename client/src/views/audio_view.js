@@ -4,7 +4,8 @@ const AudioView = function(container, audioData) {
 }
 
 AudioView.prototype.render = function () {
-  
+  const player = document.querySelector('#anthem-player');
+
 };
 
 module.exports = AudioView;
