@@ -29,6 +29,7 @@ QuizView.prototype.renderQuestion = function (index, question, onNextButtonClick
   flexBoxContainer2.appendChild(counter);
   // this.quizContainer.appendChild(counter);
 
+  //added flexBoxContainer2 to quizContainer
   this.quizContainer.appendChild(flexBoxContainer2);
 
   this.renderAnswerButtons(question, onCorrectAnswerClicked);
