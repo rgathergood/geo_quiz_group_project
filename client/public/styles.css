@@ -9,6 +9,7 @@ h1 {
 h3 {
   margin-top: 1rem;
   text-align: center;
+  display: block;
 }
 
 header {
@@ -79,10 +80,11 @@ button:hover:not([disabled]) {
 
 .next-button {
   margin: 1rem;
+  margin-left: 5rem;
+  float: right;
   width: 150px;
   display: inline-block;
   padding: 0.5rem;
-  float: right;
 }
 
 .show-correct {
@@ -97,4 +99,41 @@ button:hover:not([disabled]) {
 
 button:disabled {
   opacity: 0.8;
+}
+
+.timer {
+  font-family: 'Share Tech Mono', monospace;
+  color: rgb(0,0,0);
+  text-shadow: 0 0 5px rgba(230,10, 10, 1),  0 0 5px rgba(10, 175, 230, 0);
+  letter-spacing: 0.05em;
+  font-size: 40px;
+  padding: 5px 0;
+  display: block;
+  text-align: center;
+}
+
+.counter {
+  text-align: center;
+  color: grey;
+}
+
+.results-table {
+  width: 400px;
+  margin: auto;
+  margin-top: 2rem;
+  font-size: 120%;
+  border: 1px solid blue;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+tr {
+  text-align: center;
+}
+
+.name-score-row {
+  font-weight: bolder;
+  text-align: center;
+  border: 1px solid blue;
+  color: blue;
 }

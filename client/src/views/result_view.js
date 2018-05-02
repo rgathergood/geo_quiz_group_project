@@ -22,6 +22,7 @@ ResultView.prototype.renderResult = function (result) {
   this.container.appendChild(table);
 
   const row = table.insertRow(0);
+  row.classList.add('name-score-row');
   const nameHeader = row.insertCell(0);
   const scoreHeader = row.insertCell(1);
   nameHeader.innerHTML = 'Name';
