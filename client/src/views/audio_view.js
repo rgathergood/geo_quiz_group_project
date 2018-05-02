@@ -22,9 +22,17 @@ AudioView.prototype.nextTrack = function() {
 AudioView.prototype.refreshDisplay = function () {
   const audioDisplay = document.querySelector('#audio-display');
   audioDisplay.innerHTML = '';
+
   const h4 = document.createElement('h4');
-  h4.textContent = this.audioData.data[this.index].name;
+  h4.textContent =
+    'Now playing: The National Anthem of ' +
+    this.audioData.data[this.index].name;
   audioDisplay.appendChild(h4);
+
+  const nextTrackButton = document.createElement('button');
+  nextTrackButton.textContent = 'Next';
+  nextTrackButton.classList.add('next-track-button');
+  audioDisplay.appendChild(nextTrackButton);
 };
 
 module.exports = AudioView;
