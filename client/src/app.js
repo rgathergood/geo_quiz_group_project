@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       newQuizButton.addEventListener('click', () =>  {
         startView.renderStart((startButton, input) =>  {
           startButton.addEventListener('click', (event) => {
+            timer.stop();
             event.preventDefault();
             quizData.generateQuiz();
             result.score = 0;
