@@ -79,6 +79,7 @@ input {
   margin-top: 1rem;
   display: block;
   padding: 0.5rem 1rem;
+  background: transparent;
 }
 
 .question-image {
