@@ -179,6 +179,7 @@ button:disabled {
   text-align: center;
   margin-top: 0.8rem;
   margin-bottom: 0.5rem;
+  background: transparent;
 }
 
 .counter {
